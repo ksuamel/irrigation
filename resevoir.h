@@ -2,6 +2,6 @@
 
 namespace resevoir {
 	void initialize(int powerPin);
-	bool isEmpty(int powerPin);
+	bool hasWater(int powerPin);
 }
 

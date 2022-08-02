@@ -13,21 +13,25 @@
 
 void app(){
     unit::print_wakeup_reason();
-    // connectToWifi(Ssid, Password);
+
+    if (!unit::readyToWake(ShortSleepTimeInSeconds, ActualSleepTimeInMinutes)) {
+        unit::sleep(ShortSleepTimeInSeconds);
+        return;
+    }
   
     screen::update("Checking water.");
-    if(resevoir::isEmpty(WaterLevelPowerPin))
+    if(!resevoir::hasWater(WaterLevelPowerPin))
     {
         screen::update("Out of water!");
-        delay(5000);
-        unit::sleep(SleepTimeInSeconds);
+        delay(15000);
+        unit::sleep(ShortSleepTimeInSeconds);
         return;
     }
 
     int attempts = 0;
     while (
         soil::IsDry(SoilSensorAnalogPins, SoilSensorAirReadings, SoilSensorWaterReadings, SoilSensorAnalogPinArrayLength) && 
-        !resevoir::isEmpty(WaterLevelPowerPin))
+        resevoir::hasWater(WaterLevelPowerPin))
     {
         attempts++;
         if (attempts > MaxPumpRetries) {
@@ -40,7 +44,7 @@ void app(){
 
     screen::update("Going to sleep..");
     delay(2000);
-    unit::sleep(SleepTimeInSeconds);
+    unit::sleep(ShortSleepTimeInSeconds);
 }
  
 void setup() {

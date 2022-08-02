@@ -6,14 +6,17 @@
 
 namespace resevoir {
     void initialize(int powerPin) {
-        //pinMode(powerPin, OUTPUT);
-        //digitalWrite(powerPin, HIGH);
+        pinMode(powerPin,INPUT_PULLUP);
         delay(100);
     }
 
-    bool isEmpty(int powerPin) {
-        delay(1000);
-        return false;
+    bool hasWater(int powerPin) {
+        int pinOutput = digitalRead(powerPin);
+        if (pinOutput == HIGH) {
+            return false;
+        }
+
+        return true;
     }
 }
 

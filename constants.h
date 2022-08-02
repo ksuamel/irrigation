@@ -9,19 +9,19 @@ int SoilSensorPowerPin = 26;
 
 //Pump
 const int PumpPowerPin = 15;
-const int PumpTimeInSeconds = 5; //TODO: Fine tune this number; Perhaps use the datasheet of the pump to understand water flow and account for a buffer where water may need to populate the line.
+const int PumpTimeInSeconds = 240; //Water Flow = 1.5~3L/min; Water for 5min (3 * 60 = 300) + prime time (60 seconds)
 const int MaxPumpRetries = 3;
 
 //Resevoir
-//int WaterLevelSensorAnalogPin = 36; //TODO: Make sure the sensor is physically placed high enough to support at least 1 watering.
-int WaterLevelPowerPin = 9;
+int WaterLevelPowerPin = 13;
 
 //Wifi
 char* Ssid = "REPLACE_WITH_YOUR_SSID";
 char* Password = "REPLACE_WITH_YOUR_PASSWORD";
 
 //Unit
-const int SleepTimeInSeconds = 20;
+const int ShortSleepTimeInSeconds = 30;
+const int ActualSleepTimeInMinutes = 2; //TODO; change to a real number, perhaps 30-60 minutes?
 
 //Screen
 const int ScreenPowerPin = 23;
