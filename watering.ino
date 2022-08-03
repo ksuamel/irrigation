@@ -15,6 +15,7 @@ void app(){
     unit::print_wakeup_reason();
 
     if (!unit::readyToWake(ShortSleepTimeInSeconds, ActualSleepTimeInMinutes)) {
+        Serial.println("Not ready to wake");
         unit::sleep(ShortSleepTimeInSeconds);
         return;
     }

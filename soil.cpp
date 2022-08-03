@@ -64,8 +64,6 @@ namespace soil {
     }
 
     bool IsDry(int analogPins[], int pinAirReadings[], int pinWaterReadings[], int arrayLength) {
-        return true;
-
         sensorValues.clear();
         MoistureLevel moistureLevel;
         int rawData = 0;
