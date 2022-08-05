@@ -3,15 +3,12 @@
 namespace soil {
     enum MoistureLevel {
         Dry = 0,
-        MostlyDry,
-        Wet,
-        VeryWet,
-        Unknown,
+        Wet
     };
 
 	void initialize(int powerPin);
-	MoistureLevel GetSensorMoistureLevel(int analogPin, int pinAirReading, int pinWaterReading, int& rawDataOutput);
-	bool IsDry(int analogPins[], int pinAirReadings[], int pinWaterReadings[], int arrayLength);
+	MoistureLevel GetSensorMoistureLevel(int analogPin, int& rawDataOutput);
+	bool IsDry(int analogPins[], int arrayLength);
 }
 
 

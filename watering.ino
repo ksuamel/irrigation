@@ -31,7 +31,7 @@ void app(){
 
     int attempts = 0;
     while (
-        soil::IsDry(SoilSensorAnalogPins, SoilSensorAirReadings, SoilSensorWaterReadings, SoilSensorAnalogPinArrayLength) && 
+        soil::IsDry(SoilSensorAnalogPins, SoilSensorAnalogPinArrayLength) && 
         resevoir::hasWater(WaterLevelPowerPin))
     {
         attempts++;
