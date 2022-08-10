@@ -7,7 +7,7 @@ int SoilSensorPowerPin = 33;
 
 //Pump
 const int PumpPowerPin = 15;
-const int PumpTimeInSeconds = 180; //Water Flow = 1.5~3L/min;
+const int PumpTimeInSeconds = 240; //Water Flow = 1.5~3L/min;
 const int MaxPumpRetries = 3;
 
 //Resevoir
@@ -19,7 +19,7 @@ char* Password = "REPLACE_WITH_YOUR_PASSWORD";
 
 //Unit
 const int ShortSleepTimeInSeconds = 60;
-const int ActualSleepTimeInMinutes = 360;
+const int ActualSleepTimeInMinutes = 120;
 
 //Screen
 const int ScreenPowerPin = 23;

@@ -11,8 +11,8 @@
 namespace soil {
     
     const int ReadingsToTakePerSensor = 5;
+    const int SensorReadingDryThreshold = 1425;
     const MoistureLevel ThresholdLevelToWaterAt = MoistureLevel::Dry;
-    std::vector<std::string> sensorValues;
 
     void initialize(int powerPin) {
         pinMode(powerPin, OUTPUT);
@@ -37,7 +37,7 @@ namespace soil {
     MoistureLevel GetSensorMoistureLevel(int analogPin, int& rawDataOutput) {
         uint16_t avgValue = soil::GetAnalogAverageValue(analogPin, ReadingsToTakePerSensor);
         rawDataOutput = avgValue;
-        if (avgValue > 1725) {
+        if (avgValue > SensorReadingDryThreshold) {
             return MoistureLevel::Dry;
         }
 
@@ -45,7 +45,6 @@ namespace soil {
     }
 
     bool IsDry(int analogPins[], int arrayLength) {
-        sensorValues.clear();
         MoistureLevel moistureLevel;
         int rawData = 0;
         std::ostringstream ss;
